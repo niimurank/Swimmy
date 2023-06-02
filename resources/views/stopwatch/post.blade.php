@@ -9,9 +9,11 @@
     <body>
         <h1 class="text-center">タイム保存</h1>
         <div class="container">
-            <form action="/"></form>
+            <form action="/" method="post">
+                <input type="text" name="time" placeholder="12:34.56 12分34秒56">
+                <input type="submit" value="登録">
+            </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="{{ asset('/js/main.js') }}"></script>
     </body>
 </html>
