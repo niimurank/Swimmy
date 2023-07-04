@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('raps', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->time('time', $preciaion = 3);
+            $table->time('time', $preciaion = 2);
             $table->timestamps();
         });
     }

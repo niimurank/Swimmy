@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->time('time', $preciaion = 3);
+            $table->time('time', $preciaion = 2);
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

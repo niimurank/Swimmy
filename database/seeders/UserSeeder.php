@@ -17,11 +17,20 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'Name' => 'テスト太郎',
+            'Name' => 'テストユーザー',
             'Email' => 'test@test.test',
             'password' => bcrypt('testpassword'),
             'birthday' => new DateTime(),
             'sex' => 1,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
+         ]);
+         DB::table('users')->insert([
+            'Name' => 'テスト太郎',
+            'Email' => 'test2@test.test',
+            'password' => bcrypt('testpassword'),
+            'birthday' => new DateTime(),
+            'sex' => 2,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
          ]);

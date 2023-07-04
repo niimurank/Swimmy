@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             StyleSeeder::class,
             DistanceSeeder::class,
             UserSeeder::class,
+            RecordSeeder::class,
+            PostSeeder::class,
             ]);
         
     }
