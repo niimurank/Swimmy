@@ -1,0 +1,10 @@
+{
+    "Name":"氏名",
+    "Birthday":"生年月日",
+    "Email":"メールアドレス",
+    "Gender":"性別",
+    "Password":"パスワード",
+    "Confirm Password":"確認パスワード",
+    "Register":"登録",
+    "Already registered?":"すでにご登録している方"
+}
