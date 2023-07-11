@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang ="ja">
+<x-app-layout>
+    <x-slot name="header">
+    </x-slot>
     <head>
         <meta charset="UTF-8">
         <meta name="工事中">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>タイム共有</title>
     </head>
     <body>
-        <h1 class="text-center">投稿</h1>
         <div class="container">
+            <h1 class="text-center">投稿</h1>
+            <div class="posts">
+                @foreach($posts as $post)
+                <div class="post">
+                    <h2 class="user">user_id:{{ $post->user_id }}</h2>
+                    <p class="user_name">name:{{ $post->user->name }}</p>
+                    <p class="body">body:{{ $post->body }} </p>
+                    <p class="time">time:{{ $post->record->time }}</p>
+                    <p class="distance">distance:{{ $post->record->distance->swim_distance }}</p>
+                    <p class="style">style:{{ $post->record->style->style_name }}</p>
+                </div>
+                @endforeach
+            </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
+</x-app-layout>
 </html>

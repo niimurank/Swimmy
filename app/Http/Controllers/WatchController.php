@@ -8,8 +8,5 @@ use App\Models\Post;
 
 class WatchController extends Controller
 {
-    public function index(Record $record){
-        return view('posts.index');
-    }
 }
 ?>
