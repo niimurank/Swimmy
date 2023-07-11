@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Distance extends Model
 {
     use HasFactory;
+    
+    public function record()
+    {
+        return $this->belongsTo(Record::class);
+    }
 }

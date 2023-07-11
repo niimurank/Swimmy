@@ -22,7 +22,13 @@
             @if (isset($header))
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                                                <!-- Navigation Links -->
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
+                                <h1>最新の投稿</h1>
+                            </x-nav-link>
+                            {{ $header }}
+                        </div>
                     </div>
                 </header>
             @endif
