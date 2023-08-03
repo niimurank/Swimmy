@@ -8,7 +8,9 @@ use App\Models\Post;
 class PostController extends Controller
 {
         public function index(Post $post){
-            $posts = $post->with(['record.style', 'record.distance','user'])->get();
+            $posts = $post  ->with(['record.style', 'record.distance','user'])
+                            ->orderBy('created_at', 'desc')
+                            ->get();
             return view('posts.index', ['posts' => $posts]);
     }
 }
