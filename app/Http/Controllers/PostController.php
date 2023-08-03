@@ -14,10 +14,11 @@ class PostController extends Controller
         return view('posts.index', ['posts' => $posts]);
     }
     
-    public function show(Post $post){
+    public function show($id){
+        $post = Post::findOrFail($id);
         return view('posts.show')->with(['post' => $post]);
     }
-    
+
     public function create(Post $post){
         return view('posts.create');
     }

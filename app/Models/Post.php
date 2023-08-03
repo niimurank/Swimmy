@@ -17,4 +17,11 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    protected $fillable = [
+        'time',
+        'user_id',
+        'style_id',
+        'distance_id',
+        ];
 }

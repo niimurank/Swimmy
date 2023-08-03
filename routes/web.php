@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Providers\RouteServiceProvider;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,13 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/posts', [PostController::class,'index'])->name('posts.index');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/', function (){
+    return redirect(RouteServiceProvider::HOME);
+    })->name('home');
+
 Route::get('/create', [PostController::class,'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Route::get('/dashboard', function () {
     return view('posts.index');

@@ -14,7 +14,7 @@
         <div class="container mx-auto">
             <div class="posts">
                 @foreach($posts as $post)
-                <a href = "/posts/{{ $post->id }}">
+                <a href = "/posts/{{ $post->id }}" class="select-none">
                     <article class="post flex p-2 text-center border bg-white hover:bg-gray-50">
                         <div class="profile mr-4">
                             <img class="w-12 h-12 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar">
@@ -24,10 +24,19 @@
                                 <div class="user_name font-extrabold">{{ $post->user->name }}</div>
                                 <div class="datetime text ml-auto">{{ $post->created_at->format('Y-m/d H:i') }}</div>
                             </div>
-                            <div class="record flex felx-row border rounded-full my-2">
-                                <p class="distance ms-2">{{ $post->record->distance->swim_distance }}m</p>
-                                <p class="style ms-2">{{ $post->record->style->style_name }}</p>
-                                <p class="time ml-auto select-all">{{ $post->record->time }}秒</p>
+                            <div class="record flex flex-col border rounded-full my-2">
+                                <div class="flex ms-2">
+                                    @if ($post->record->distance->longcorse == 1)
+                                        <p class="longcorse">長水路(50mプール)</p>
+                                    @else
+                                        <p class="shortcorse">短水路(25mプール)</p>
+                                    @endif
+                                </div>
+                                <div class="flex flex-row">
+                                    <p class="distance ms-2">{{ $post->record->distance->swim_distance }}m</p>
+                                    <p class="style ms-2">{{ $post->record->style->style_name }}</p>
+                                    <p class="time ml-auto select-all">{{ $post->record->time }}秒</p>
+                                </div>
                             </div>
                             <p class="body text-left ml-2">{{ $post->body }}</p>
                             <div class="flex mt-2">
