@@ -48,8 +48,8 @@
                 @endauth
                 @guest
                     <div class="inline-flex">
-                        <a href="/register" class="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">アカウント新規作成</a>
-                        <a href="/login" class="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">ログイン</a>
+                        <a href="{{ route('register') }}" class="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">アカウント新規作成</a>
+                        <a href="{{ route('login') }}" class="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">ログイン</a>
                     </div>
                 @endguest
             </div>
