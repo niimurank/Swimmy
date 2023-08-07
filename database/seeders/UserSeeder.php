@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'Name' => 'テストユーザー',
-            'Email' => 'test@test.test',
+            'name' => 'テストユーザー',
+            'email' => 'test@test.test',
             'password' => bcrypt('testpassword'),
             'birthday' => new DateTime(),
             'sex' => 1,
@@ -26,8 +26,8 @@ class UserSeeder extends Seeder
             'updated_at' => new DateTime(),
          ]);
          DB::table('users')->insert([
-            'Name' => 'テスト太郎',
-            'Email' => 'test2@test.test',
+            'name' => 'テスト太郎',
+            'email' => 'test2@test.test',
             'password' => bcrypt('testpassword'),
             'birthday' => new DateTime(),
             'sex' => 2,
