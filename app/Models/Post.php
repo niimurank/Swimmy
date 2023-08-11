@@ -19,9 +19,10 @@ class Post extends Model
     }
     
     protected $fillable = [
-        'time',
+        'body',
+        'image',
+        'record_id',
+        'swimmenu_id',
         'user_id',
-        'style_id',
-        'distance_id',
         ];
 }

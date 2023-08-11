@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->time('time', $preciaion = 2);
+            $table->decimal('time',$precision = 6, $scale = 2)->unsigned();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->boolean('longcorse');
+            $table->date('time_at');
         });
     }
 
