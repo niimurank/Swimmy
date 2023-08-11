@@ -21,4 +21,13 @@ class Record extends Model
     {
         return $this->belongsTo(Distance::class);
     }
+    
+    protected $fillable = [
+        'time',
+        'longcorse',
+        'time_at',
+        'user_id',
+        'style_id',
+        'distance_id',
+        ];
 }

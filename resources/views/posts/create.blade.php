@@ -23,11 +23,11 @@
                     <div class="flex flex-col p-2 text-center border bg-white">
                         <div class="flex justify-start m-4">
                             <div class="flex items-center">
-                                <input checked id="default-radio-1" type="radio" value="0" name="post[longcorse]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <input checked id="default-radio-1" type="radio" value="0" name="record[longcorse]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">短水路(25mプール)</label>
                             </div>
                             <div class="flex items-center ml-2">
-                                <input id="default-radio-2" type="radio" value="1" name="post[longcorse]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <input id="default-radio-2" type="radio" value="1" name="record[longcorse]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">長水路(50mプール)</label>
                             </div>
                         </div>
@@ -49,11 +49,11 @@
                         <div class="flex justify-start m-4">
                             <div>
                                 <label>計測日</label>
-                                <input name="post[date]" type="date" value="{{ date('Y-m-d') }}"/>
+                                <input name="record[time_at]" type="date" value="{{ date('Y-m-d') }}"/>
                             </div>
                             <div class="ml-4">
                                 <label class="">計測タイム</label>
-                                <input type="text" name="post[time]" placeholder="0000.00" pattern="([0-5]\d|[0-5]\d{2}|[0-5]\d{3})\.(\d{1,2})?" value=""/>
+                                <input type="text" name="record[time]" placeholder="0000.00" pattern="([0-5]\d|[0-5]\d{2}|[0-5]\d{3})\.(\d{1,2})?" value=""/>
                             </div>
                         </div>
                         <div>
