@@ -24,5 +24,23 @@ class PostSeeder extends Seeder
             'created_at'    => new DateTime(),
             'updated_at'    => new DateTime(),
         ]);
+        
+        DB::table('posts')->insert([
+            'id'            => 2,
+            'body'          => '２回目の大会でした。タイムは変わりませんでした。',
+            'record_id'     => 1,
+            'user_id'       => 1,
+            'created_at'    => new DateTime(),
+            'updated_at'    => new DateTime(),
+        ]);
+        
+        DB::table('posts')->insert([
+            'id'            => 3,
+            'body'          => '別の競技に出場しました。',
+            'record_id'     => 2,
+            'user_id'       => 1,
+            'created_at'    => new DateTime(),
+            'updated_at'    => new DateTime(),
+        ]);
     }
 }

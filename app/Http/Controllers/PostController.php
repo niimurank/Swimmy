@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Style;
+use App\Models\Distance;
 
 class PostController extends Controller
 {
@@ -11,21 +13,18 @@ class PostController extends Controller
         $posts = $post  ->with(['record.style', 'record.distance','user'])
                         ->orderBy('created_at', 'desc')
                         ->get();
-        return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', compact('posts'));
     }
     
     public function show($id){
         $post = Post::findOrFail($id);
-        return view('posts.show')->with(['post' => $post]);
+        return view('posts.show',compact('post'));
     }
 
-    public function create(Post $post){
-        return view('posts.create');
-    }
-    
-    public function store(Request $request,Post $post){
-        $input = $request['post'];
-        $post -> create($input);
-        return redirect('posts.index' . $post->id);
+    public function create(Style $style,Distance $distance){
+        $styles = $style->get();
+        $distances = $distance->get();
+        
+        return view('posts.create',compact('styles','distances'));
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('swimmenu_id')->constrained('swimmenus');
             $table->foreignId('user_id')->constrained('users');
+            $table->timestamps();
         });
     }
 

@@ -20,6 +20,7 @@ class Post extends Model
     
     protected $fillable = [
         'time',
+        'time_at',
         'user_id',
         'style_id',
         'distance_id',

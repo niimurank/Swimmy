@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('distances', function (Blueprint $table) {
             $table->id();
             $table->integer('swim_distance');
-            $table->boolean('longcorse');
+            $table->timestamps();
         });
     }
 
