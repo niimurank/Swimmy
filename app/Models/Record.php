@@ -22,6 +22,8 @@ class Record extends Model
         return $this->belongsTo(Distance::class);
     }
     
+    protected $dates = ['time_at'];
+
     protected $fillable = [
         'time',
         'longcorse',

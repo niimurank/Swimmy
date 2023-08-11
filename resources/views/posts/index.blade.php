@@ -24,6 +24,7 @@
                                 @auth
                                 <div class="user_name font-extrabold">{{ $post->user->name }}</div>
                                 @endauth
+                                {{-- ゲストは個人情報を表示できないように --}}
                                 @guest
                                 <div class="user_name font-extrabold">ユーザー</div>
                                 @endguest
@@ -41,6 +42,7 @@
                                     <p class="distance ms-2">{{ $post->record->distance->swim_distance }}m</p>
                                     <p class="style ms-2">{{ $post->record->style->style_name }}</p>
                                     <p class="time ml-auto select-all">{{ $post->record->time }}秒</p>
+                                    <p class="time-at">{{ $post->record->time_at->format('Y-m/d') }}</p>
                                 </div>
                             </div>
                             <p class="body text-left ml-2">{{ $post->body }}</p>
