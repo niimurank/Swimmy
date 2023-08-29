@@ -22,14 +22,15 @@ Route::get('/', function (){
     return redirect(RouteServiceProvider::HOME);
     })->name('home');
 
-Route::get('/create', [PostController::class,'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-
 Route::get('/dashboard', function () {
     return view('posts.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/posts/like/{id}', [PostController::class,'like'])->name('posts.like');
+    Route::get('/posts/unlike/{id}', [PostController::class,'unlike'])->name('posts.unlike');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/create', [PostController::class,'create'])->name('posts.create');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
