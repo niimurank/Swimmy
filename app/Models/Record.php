@@ -22,6 +22,13 @@ class Record extends Model
         return $this->belongsTo(Distance::class);
     }
     
+    public function setTimeAttribute($value)
+    {
+        $minutes = floor($value / 60);
+        $seconds = $value - ($minutes * 60);
+        $this->attributes['time'] = ($minutes * 60) + $seconds;
+    }
+    
     protected $dates = ['time_at'];
 
     protected $fillable = [
