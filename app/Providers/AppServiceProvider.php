@@ -26,7 +26,6 @@ class AppServiceProvider extends ServiceProvider
     {
         \URL::forceScheme('https');
         $this->app['request']->server->set('HTTPS','on');
-        
         Blade::directive('formatTime', function ($expression) {
     return "<?php
         \$totalSeconds = {$expression};
