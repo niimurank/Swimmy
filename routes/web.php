@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Providers\RouteServiceProvider;
 
 /*
@@ -17,18 +18,17 @@ use App\Providers\RouteServiceProvider;
 */
 
 Route::get('/posts', [PostController::class,'index'])->name('posts.index');
-Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/', function (){
-    return redirect(RouteServiceProvider::HOME);
-    })->name('home');
-
+Route::get('/posts/{post_id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/', function (){return redirect(RouteServiceProvider::HOME);})->name('home');
+Route::get('/posts/{post_id}/comments', [CommentController::class, 'create'])->name('comments.create');
+Route::post('/posts/{post_id}/comments',[CommentController::class, 'store'])->name('comments.store');
 Route::get('/dashboard', function () {
     return view('posts.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/posts/like/{id}', [PostController::class,'like'])->name('posts.like');
-    Route::get('/posts/unlike/{id}', [PostController::class,'unlike'])->name('posts.unlike');
+    Route::get('/posts/like/{post_id}', [PostController::class,'like'])->name('posts.like');
+    Route::get('/posts/unlike/{post_id}', [PostController::class,'unlike'])->name('posts.unlike');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/create', [PostController::class,'create'])->name('posts.create');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

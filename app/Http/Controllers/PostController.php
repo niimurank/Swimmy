@@ -23,9 +23,10 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
     //投稿詳細表示
-    public function show($id){
-        $post = Post::findOrFail($id);
-        return view('posts.show',compact('post'));
+    public function show($post_id){
+        $post = Post::findOrFail($post_id);
+        $comments = $post->comments;
+        return view('posts.show',compact('post','comments'));
     }
     //投稿作成表示
     public function create(Style $style,Distance $distance){
@@ -52,22 +53,18 @@ class PostController extends Controller
         return redirect('/posts');
     }
     //投稿いいね処理
-    public function like($id){
+    public function like($post_id){
         Like::create([
-            'post_id'=> $id,
+            'post_id'=> $post_id,
             'user_id'=> Auth::id(),
             ]);
-            
-            session()->flash('success','You Liked the Post.');
             
             return redirect()->back();
     }
     //投稿いいね取り消し処理
-    public function unlike($id){
-        $like = Like::where('post_id',$id)->where('user_id', Auth::id())->first();
+    public function unlike($post_id){
+        $like = Like::where('post_id',$post_id)->where('user_id', Auth::id())->first();
         $like ->delete();
-        
-        session()->flash('success','You Unliked the Post.');
         
         return redirect()->back();
     }

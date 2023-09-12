@@ -24,6 +24,11 @@ class Post extends Model
         return $this->hasMany(Like::class, 'post_id');
     }
     
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id');
+    }
+    
     protected $fillable = [
         'body',
         'image',

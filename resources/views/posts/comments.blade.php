@@ -59,27 +59,25 @@
                     </div>
                 </article>
             </div>
-                @if (count($comments) > 0)
-                @foreach($comments as $comment)
-                <div class="comments flex p-2 text-center border bg-white">
-                    <div class="comment ml-16 border-b-2 border-l-2 border-gray-300 pl-4 w-full">
-                        <div class="profile mr-4 flex">
-                            <img class="w-12 h-12 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar">
-                            <strong class="pt-2 ml-4">{{ $comment->user->name }}</strong>
-                        </div>
-                        <div class="ml-16 text-left">
-                            <p>{{ $comment->body }}</p>
-                        </div>
-                    </div>
+            <form action="/posts/{{$post->id}}/comments" method="POST" class="">
+                @csrf
+                <div class="comment p-2 text-center border bg-white w-full">
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">コメントを投稿する</label>
+                        <textarea name="body" id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="コメントを記入する"></textarea>
                 </div>
-            @endforeach
-            @else
-                <div class="comments flex p-2 text-center border bg-white">
-                    <div class="ml-16 text-left">
-                        <p>コメントはまだありません。</p>
-                    </div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-            @endif
+                @endif
+                <div class="flex justify-end mt-2">
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">コメント</button>
+                </div>
+            </form>
         </div>
     </body>
 </x-app-layout>
