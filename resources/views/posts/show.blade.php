@@ -19,7 +19,13 @@
                 <div class="comment ml-16 border-b-2 border-l-2 border-gray-300 pl-4 w-full">
                     <div class="profile mr-4 flex">
                         <img class="w-12 h-12 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar">
+                        {{-- 認証していない人には名前を表示させないように--}}
+                        @auth
                         <strong class="pt-2 ml-4">{{ $comment->user->name }}</strong>
+                        @endauth
+                        @guest
+                        <div class="user_name font-extrabold">ユーザー</div>
+                        @endguest
                     </div>
                     <div class="ml-16 text-left">
                         <p>{{ $comment->body }}</p>
