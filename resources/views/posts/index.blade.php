@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang ="ja">
 <x-app-layout>
     <x-slot name="header">
         <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
             <h1>最新の投稿</h1>
         </x-nav-link>
     </x-slot>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="工事中">
-    </head>
-    <body>
         <div class="container mx-auto">
             <div class="posts">
                 @foreach($posts as $post)
@@ -27,6 +20,4 @@
             </div>
         </a>
         @endauth
-    </body>
 </x-app-layout>
-</html>

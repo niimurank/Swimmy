@@ -13,7 +13,7 @@
                     @guest
                     <div class="user_name font-extrabold">ユーザー</div>
                     @endguest
-                    <div class="datetime text ml-auto">{{ $post->created_at->format('Y-m/d H:i') }}</div>
+                    <div class="datetime text ml-auto text-gray-400">{{ $post->created_at->format('Y-m/d H:i') }}</div>
                 </div>
                 <div class="record flex flex-col border rounded-full my-2">
                     <div class="flex ms-2">
