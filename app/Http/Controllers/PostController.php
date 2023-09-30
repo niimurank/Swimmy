@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
 use App\Models\Post;
 use App\Models\Style;
 use App\Models\Distance;
@@ -19,7 +20,7 @@ class PostController extends Controller
     public function index(Post $post){
         $posts = $post  ->with(['record.style', 'record.distance','user'])
                         ->orderBy('created_at', 'desc')
-                        ->get();
+                        ->paginate(10);
         return view('posts.index', compact('posts'));
     }
     //投稿詳細表示

@@ -10,6 +10,7 @@
                     <x-post :post="$post" />
                 @endforeach
             </div>
+            {{ $posts->links('pagination::tailwind') }}
         </div>
         @auth
         <a href="{{ route('posts.create') }}">
@@ -20,4 +21,5 @@
             </div>
         </a>
         @endauth
+        
 </x-app-layout>
