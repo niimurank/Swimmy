@@ -53,6 +53,13 @@ class PostController extends Controller
         
         return redirect('/posts');
     }
+    //投稿削除処理
+    public function destroy($id){
+        $post=Post::find($id);
+        $this->authorize('delete',$post);
+        $post->delete();
+        return redirect()->route('posts.index');
+    }
     //投稿いいね処理
     public function like($post_id){
         Like::create([

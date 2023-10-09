@@ -21,5 +21,4 @@
             </div>
         </a>
         @endauth
-        
 </x-app-layout>
