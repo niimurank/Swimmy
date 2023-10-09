@@ -71,15 +71,21 @@
                         </svg>
                         <div class="select-none">{{ $post->likes->count() }}</div>
                     </div>
-                    <a>
-                        <div class="btn-reply flex w-10 h-7 rounded-full hover:bg-sky-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="m-auto w-5 h-5">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
-                            </svg>
-                            <div class="select-none">{{ $post->comments->count() }}</div>
-                        </div>
-                    </a>
+                    <div class="btn-reply flex w-10 h-7 rounded-full hover:bg-sky-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="m-auto w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+                        </svg>
+                        <div class="select-none">{{ $post->comments->count() }}</div>
+                    </div>
                     @endguest
+                    
+                    @can('delete',$post)
+                    <form action="{{ route('post.destroy', $post->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" class="ml-auto">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md bg-red-100 border border-transparent font-semibold text-red-500 hover:text-white hover:bg-red-100 focus:outline-none focus:ring-2 ring-offset-white focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">削除</button>
+                    </form>
+                    @endcan
                 </div>
             </div>
         </article>
