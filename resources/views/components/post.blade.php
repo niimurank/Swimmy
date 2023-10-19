@@ -1,9 +1,10 @@
 <div>
     <a href = "/posts/{{ $post->id }}" class="select-none">
         <article class="post flex p-2 text-center border bg-white hover:bg-gray-50">
-            <div class="profile mr-4">
-                <img class="w-12 h-12 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar">
-            </div>
+            <!--プロフィール画像は未実装のため一度コメント-->
+            <!--<div class="profile mr-4">-->
+            <!--    <img class="w-12 h-12 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar">-->
+            <!--</div>-->
             <div class="main flex flex-col w-full">
                 <div class="flex pt-2 ml-2">
                     @auth
@@ -78,7 +79,7 @@
                         <div class="select-none">{{ $post->comments->count() }}</div>
                     </div>
                     @endguest
-                    
+                    <!--本人のみ削除ができるように-->
                     @can('delete',$post)
                     <form action="{{ route('post.destroy', $post->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" class="ml-auto">
                         @csrf
