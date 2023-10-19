@@ -36,7 +36,7 @@
                     {{-- いいねがついているか否かで処理先変更--}}
                     {{-- 認証済み --}}
                     @auth
-                    @if($post->is_liked_by_auth_user())
+                    @if($post->isLikedBy())
                     <a href="{{ route('posts.unlike', ['post_id' =>$post->id]) }}">
                         <div class="btn-good flex w-10 h-7 rounded-full hover:bg-pink-200">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="m-auto w-5 h-5 fill-pink-500">
