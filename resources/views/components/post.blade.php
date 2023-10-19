@@ -55,6 +55,7 @@
                         </div>
                     </a>
                     @endif
+                    <!--返信を表示させる-->
                     <a href="{{ route('comments.store',['post_id' =>$post->id] )}}">
                         <div class="btn-reply flex w-10 h-7 rounded-full hover:bg-sky-200">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="m-auto w-5 h-5">
