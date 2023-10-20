@@ -1,6 +1,5 @@
 <div>
-    <!--<a href = "/posts/{{ $post->id }}" class="select-none">-->
-    <a>
+    <a href = "/posts/{{ $post->id }}" class="select-none">
         <article class="post flex p-2 text-center border bg-white hover:bg-gray-50">
             <!--プロフィール画像は未実装のため一度コメント-->
             <!--<div class="profile mr-4">-->
