@@ -1,50 +1,18 @@
-const time = document.getElementById('time');
-const startBtn = document.getElementById('startbtn');
-const stopBtn = document.getElementById('stopbtn');
-const resetBtn = document.getElementById('reset');
-
-//開始時間
-let startTime;
-//停止時間
-let stopTime = 0;
-//タイムアウトID
-let timeoutID;
-
-//時間を表示する関数
-function displayTime() {
-    const currentTime = new Date(Date.now() - startTime + stopTime);
-    const h = String(currentTime.getHours()-1).padStart(2, '0');
-    const m = String(currentTime.getMinutes()).padStart(2, '0');
-    const s = String(currentTime.getSeconds()).padStart(2, '0');
-    const ms = String(currentTime.getMilliseconds()).padStart(2, '0');
-    
-    time.textContent = `${h}:${m}:${s}:${ms}`;
-    timeoutID = setTimeout(displayTime, 10);
+//likeをされているかをclassで判定し、likeを行う。すでにされていればunliked
+function toggleLike(postId) {
+  const isLiked = $('#like-button-' + postId).hasClass('hover:bg-pink-200');
+  $.ajax({
+    headers: {
+      "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+    url: `posts/${isLiked ? 'unlike' : 'like'}/${postId}`,
+    method: isLiked ? 'DELETE' : 'POST',
+  })
+    .done(function (data, status, xhr) {
+      $('#likes-count-' + postId).text(data.likeCount);
+      $('#like-button-' + postId)
+        .toggleClass('hover:bg-pink-200', !isLiked)
+        .toggleClass('hover:bg-pink-100', isLiked);
+      $('#like-button-' + postId + ' svg').toggleClass('fill-pink-500');
+    });
 }
-
-//スタートボタンがクリックされたら時間を進める
-startBtn.addEventListener('click', () => {
-    startBtn.disabled = true;
-    stopBtn.disabled  = false;
-    resetBtn          = true;
-    startTime = Date.now();
-    displayTime();
-});
-
-//ストップボタンがクリックされたら時間を止める
-stopBtn.addEventListener('click', function() {
-    startBtn.disabled = false;
-    stopBtn.disabled  = true;
-    resetBtn.disabled = false;
-    clearTimeout(timeoutID);
-    stopTime += (Date.now() - startTime);
-});
-
-//リセットぼたんがクリックされたら時間を0に戻す
-resetBtn.addEventListener('click', function(){
-    startBtn.disabled = false;
-    stopBtn.disabled  = true;
-    resetBtn.disabled = true;
-    time.textContent = '00:00:00.00';
-    stopTime = 0;
-});

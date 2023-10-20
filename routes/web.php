@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Providers\RouteServiceProvider;
 
@@ -26,8 +27,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     //投稿のいいね機能
-    Route::get('/posts/like/{post_id}', [PostController::class,'like'])->name('posts.like');
-    Route::get('/posts/unlike/{post_id}', [PostController::class,'unlike'])->name('posts.unlike');
+    Route::post('/posts/like/{post_id}', [LikeController::class,'store'])->name('posts.like');
+    Route::delete('/posts/unlike/{post_id}', [LikeController::class,'destroy'])->name('posts.unlike');
     //投稿
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/create', [PostController::class,'create'])->name('posts.create');
