@@ -1,6 +1,6 @@
 <div>
-    <a href="/posts/{{ $post->id }}" class="select-none" aria-label="View post details">
-        <section class="post flex p-2 text-center border bg-white hover:bg-gray-50">
+    <section class="post flex p-2 text-center border bg-white hover:bg-gray-50">
+        <a href="/posts/{{ $post->id }}" class="select-none" aria-label="View post details">
             <div class="main flex flex-col w-full">
                 <div class="flex pt-2 ml-2">
                     @auth
@@ -24,21 +24,22 @@
                     </div>
                 </div>
                 <p class="body text-left ml-2">{{ $post->body }}</p>
-                <div class="flex mt-2">
-                    <!-- Like button -->
-                    <x-like-button :post="$post" />
-                    <!-- Comment button -->
-                    <x-comment-button :post="$post" />
-                    <!-- Delete button -->
-                    @can('delete', $post)
-                        <form action="{{ route('post.destroy', $post->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" class="ml-auto">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md bg-red-100 border border-transparent font-semibold text-red-500 hover:text-white hover:bg-red-100 focus:outline-none focus:ring-2 ring-offset-white focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" aria-label="Delete post">削除</button>
-                        </form>
-                    @endcan
-                </div>
+            </a>
+            <div class="flex mt-2">
+                
+                <!-- Like button -->
+                <x-like-button :post="$post" />
+                <!-- Comment button -->
+                <x-comment-button :post="$post" />
+                <!-- Delete button -->
+                @can('delete', $post)
+                    <form action="{{ route('post.destroy', $post->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');" class="ml-auto">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="py-1 px-2 inline-flex justify-center items-center gap-2 rounded-md bg-red-100 border border-transparent font-semibold text-red-500 hover:text-white hover:bg-red-100 focus:outline-none focus:ring-2 ring-offset-white focus:ring-red-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800" aria-label="Delete post">削除</button>
+                    </form>
+                @endcan
             </div>
-        </section>
-    </a>
+        </div>
+    </section>
 </div>
