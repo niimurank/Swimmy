@@ -22,10 +22,9 @@
                         {{-- 認証していない人には名前を表示させないように--}}
                         @auth
                         <strong class="pt-2 ml-4">{{ $comment->user->name }}</strong>
-                        @endauth
-                        @guest
+                        @else
                         <div class="user_name font-extrabold">ユーザー</div>
-                        @endguest
+                        @auth
                     </div>
                     <div class="ml-16 text-left">
                         <p>{{ $comment->body }}</p>
