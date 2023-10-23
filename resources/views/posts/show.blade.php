@@ -24,7 +24,7 @@
                         <strong class="pt-2 ml-4">{{ $comment->user->name }}</strong>
                         @else
                         <div class="user_name font-extrabold">ユーザー</div>
-                        @auth
+                        @endauth
                     </div>
                     <div class="ml-16 text-left">
                         <p>{{ $comment->body }}</p>
