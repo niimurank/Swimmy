@@ -1,6 +1,6 @@
 <div>
     <section class="post flex p-2 text-center border bg-white hover:bg-gray-50">
-        <a href="/posts/{{ $post->id }}" class="select-none" aria-label="View post details">
+        <a href="{{ route('posts.show', ['post_id' => $post->id]) }}" class="select-none" aria-label="View post details">
             <div class="main flex flex-col w-full">
                 <div class="flex pt-2 ml-2">
                     @auth
