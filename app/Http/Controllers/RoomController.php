@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Room;
-class MessageController extends Controller
+use Illuminate\Support\Facades\Auth;
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Room $room)
     {
+        $user_id = Auth::id();
+        $rooms = Room::whereHas('users', function($query) use ($user_id) {
+                $query->where('users.id', $user_id);
+                })->withCount('users')->get();
         
+        
+        
+        return view('rooms.index',compact('rooms'));
     }
 
     /**
@@ -43,9 +51,10 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($room_id)
     {
-        //
+        $messages = Room::find($room_id)->messages;
+        return view('rooms.show',compact('messages'));
     }
 
     /**

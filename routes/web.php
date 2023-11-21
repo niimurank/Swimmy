@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RoomController;
 use App\Providers\RouteServiceProvider;
 
 /*
@@ -42,7 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //message機能
-    Route::get('/messages',[MessageController::class, 'index'])->name('message.index');
+    Route::get('/rooms',[RoomController::class, 'index'])->name('rooms.index');
+    Route::get('/rooms/{room_id}',[RoomController::class,'show'])->name('rooms.show');
 });
 
 require __DIR__.'/auth.php';

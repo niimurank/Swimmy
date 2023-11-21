@@ -3,6 +3,9 @@
     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
         <h1>最新の投稿</h1>
     </x-nav-link>
+    <x-nav-link class="ml-12" :href="route('rooms.index')" :active="request()->routeIs('rooms.index')">
+            <h1>メッセージ</h1>
+        </x-nav-link>
 </div>
 @else
 <div class="flex">
@@ -17,6 +20,9 @@
     <div class="flex flex-auto justify-center">
         <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
             <h1>最新の投稿</h1>
+        </x-nav-link>
+        <x-nav-link class="ml-12" :href="route('rooms.index')" :active="request()->routeIs('rooms.index')">
+            <h1>メッセージ</h1>
         </x-nav-link>
     </div>
 </div>
