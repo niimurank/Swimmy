@@ -54,7 +54,7 @@ class RoomController extends Controller
     public function show($room_id)
     {
         $messages = Room::find($room_id)->messages;
-        return view('rooms.show',compact('messages'));
+        return view('rooms.show',compact('messages','room_id'));
     }
 
     /**

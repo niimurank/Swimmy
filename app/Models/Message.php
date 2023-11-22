@@ -18,4 +18,9 @@ class Message extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    protected $fillable = [
+        'room_id',
+        'body'
+        ];
 }

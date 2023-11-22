@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Room;
+use App\Models\Message;
 class MessageController extends Controller
 {
     /**
@@ -32,9 +34,14 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Message $message)
     {
-        //
+        $input_message = $request['message'];
+        $message->fill($input_message);
+        $message->user_id = Auth::id();
+        $message->save();
+        
+        return redirect()->route('rooms.show',['room_id' => $input_message['room_id']]);
     }
 
     /**
