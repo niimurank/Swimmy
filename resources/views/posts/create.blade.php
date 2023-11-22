@@ -11,7 +11,7 @@
     </x-slot>
     <div class="container mx-auto">
         <div class="posts">
-            <form action="/posts" method="POST" class="mt-10">
+            <form action="{{ route('posts.store') }}" method="POST" class="mt-10">
                 @csrf
                 <div class="flex flex-col p-2 text-center border bg-white">
                     <div class="flex justify-start m-4">

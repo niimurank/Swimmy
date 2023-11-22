@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
             RecordSeeder::class,
             PostSeeder::class,
             CommentSeeder::class,
+            RoomSeeder::class,
+            MessageSeeder::class,
+            Room_UserSeeder::class,
             ]);
         
     }

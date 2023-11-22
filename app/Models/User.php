@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Post::class);
     }
+    
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class);
+    }
 }
