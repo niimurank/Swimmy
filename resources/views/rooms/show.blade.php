@@ -7,7 +7,7 @@
             @foreach ($messages as $message)
                 <x-message :message="$message" />
             @endforeach
-            <form action="{{ route('messages.store') }}" method="POST" class="max-w-xl flex mx-auto p-4 h-full">
+            <form action="{{ route('messages.store') }}" method="POST" class="flex p-4 bottom-0 end-0 fixed inset-x-20">
                 @csrf
                 <input type="hidden" name="message[room_id]" value="{{ $room_id }}">
                 <textarea id="message" name="message[body]" rows="1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="メッセージを入力..."></textarea>
