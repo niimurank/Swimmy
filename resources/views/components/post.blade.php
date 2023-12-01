@@ -19,6 +19,7 @@
                     <div class="flex flex-row">
                         <p class="distance ms-2">{{ $post->record->distance->swim_distance }}m</p>
                         <p class="style ms-2">{{ $post->record->style->style_name }}</p>
+                        <!-- DBから取得した秒合算をm:ss.ミリセコンド(2桁)へ変換 -->
                         <p class="time ml-auto select-all">@formatTime($post->record->time)秒</p>
                         <p class="time-at">{{ $post->record->time_at->format('Y-m/d') }}</p>
                     </div>

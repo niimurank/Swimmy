@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         \URL::forceScheme('https');
         $this->app['request']->server->set('HTTPS','on');
-        
+        //60秒を1分へ変換し、M:SS.ミリセカンド(2桁)で表示
         Blade::directive('formatTime', function ($expression) {
         return "<?php
             \$totalSeconds = {$expression};
