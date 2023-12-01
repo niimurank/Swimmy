@@ -19,12 +19,6 @@ use App\Providers\RouteServiceProvider;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//ゲストアカウント
-Route::get('/posts', [PostController::class,'index'])->name('posts.index');
-Route::get('/posts/{post_id}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/', function (){return redirect(RouteServiceProvider::HOME);})->name('home');
-Route::get('/dashboard', function () {return view('posts.index');})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::prefix('posts')->group(function(){
         Route::post('/like/{post_id}', [LikeController::class,'store'])->name('posts.like');
@@ -52,4 +46,9 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+//ゲストアカウント
+Route::get('/posts', [PostController::class,'index'])->name('posts.index');
+Route::get('/posts/{post_id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/', function (){return redirect(RouteServiceProvider::HOME);})->name('home');
+Route::get('/dashboard', function () {return view('posts.index');})->middleware(['auth', 'verified'])->name('dashboard');
 require __DIR__.'/auth.php';
