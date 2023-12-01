@@ -4,9 +4,11 @@
     </x-slot>
     <div class="container mx-auto h-screen bg-white">
         <section class="rooms p-2 text-center bg-white">
-            @foreach ($messages as $message)
-                <x-message :message="$message" />
-            @endforeach
+            <ul class="space-y-2">
+                @foreach ($messages as $message)
+                    <x-message :message="$message" />
+                @endforeach
+            </ul>
             <form action="{{ route('messages.store') }}" method="POST" class="flex p-4 bottom-0 end-0 fixed inset-x-20">
                 @csrf
                 <input type="hidden" name="message[room_id]" value="{{ $room_id }}">
