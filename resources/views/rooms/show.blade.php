@@ -9,7 +9,8 @@
                     <x-message :message="$message" />
                 @endforeach
             </ul>
-            <form action="{{ route('messages.store') }}" method="POST" class="flex p-4 bottom-0 end-0 fixed inset-x-20">
+        </section>
+        <form action="{{ route('messages.store') }}" method="POST" class="flex w-1/3 p-4 bottom-0 end-0 absolute bottom-0">
                 @csrf
                 <input type="hidden" name="message[room_id]" value="{{ $room_id }}">
                 <textarea id="message" name="message[body]" rows="1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="メッセージを入力..."></textarea>
@@ -17,6 +18,5 @@
                     送信
                 </button>
             </form>
-        </section>
     </div>
 </x-app-layout>
