@@ -3,7 +3,7 @@
   <!-- Card -->
   <div class="bg-gray-300 border border-gray-200 rounded-2xl p-2 space-y-3 dark:bg-slate-900 dark:border-gray-700">
     <div class="space-y-1.5">
-      <p class="mb-1.5 text-sm text-gray-800 dark:text-white">
+      <p class="mb-1.5 text-sm text-gray-800 dark:text-white break-all">
         {{ $message->body }}
       </p>
     </div>
