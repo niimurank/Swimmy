@@ -1,6 +1,5 @@
 <div>
     <section class="post flex p-2 text-center border bg-white hover:bg-gray-50">
-        <a href="{{ route('posts.show', ['post_id' => $post->id]) }}" class="select-none" aria-label="View post details">
             <div class="main flex flex-col w-full">
                 <div class="flex pt-2 ml-2">
                     @auth
@@ -10,6 +9,7 @@
                     @endauth
                     <div class="datetime text ml-auto text-gray-400">{{ $post->created_at->format('Y-m/d H:i') }}</div>
                 </div>
+                <a href="{{ route('posts.show', ['post_id' => $post->id]) }}" class="select-none" aria-label="View post details">
                 <div class="record flex flex-col border rounded-full my-2">
                     <div class="flex ms-2">
                         <p class="{{ $post->record->longcorse == 1 ? 'longcorse' : 'shortcorse' }}">
