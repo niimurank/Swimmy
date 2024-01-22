@@ -31,11 +31,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/{post_id}/comments', [CommentController::class, 'create'])->name('comments.create');
         Route::post('/{post_id}/comments',[CommentController::class, 'store'])->name('comments.store');
     });
-    //プロフィール変更
     Route::prefix('profile')->group(function(){
-        Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/edit', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/edit', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
     Route::prefix('rooms')->group(function(){
         //メッセージ機能
