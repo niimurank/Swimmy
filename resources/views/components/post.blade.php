@@ -3,14 +3,14 @@
             <div class="main flex flex-col w-full">
                 <div class="flex pt-2 ml-2">
                     @auth
-                        <div class="user_name font-extrabold">{{ $post->user->name }}</div>
+                        <p class="user_name font-extrabold">{{ $post->user->name }} @<span class="text-gray-400">{{ $post->user->userid }}</span></p>
                     @else
-                        <div class="user_name font-extrabold">ユーザー</div>
+                        <p class="user_name font-extrabold">ユーザー</p>
                     @endauth
                     <div class="datetime text ml-auto text-gray-400">{{ $post->created_at->format('Y-m/d H:i') }}</div>
                 </div>
                 <a href="{{ route('posts.show', ['post_id' => $post->id]) }}" class="select-none" aria-label="View post details">
-                <div class="record flex flex-col border rounded-full my-2">
+                <div class="record flex flex-col border rounded-lg my-2">
                     <div class="flex ms-2">
                         <p class="{{ $post->record->longcorse == 1 ? 'longcorse' : 'shortcorse' }}">
                             {{ $post->record->longcorse == 1 ? '長水路(50mプール)' : '短水路(25mプール)' }}
