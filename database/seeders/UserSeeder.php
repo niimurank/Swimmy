@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'テストユーザー',
+            'userid' => 'testuser',
             'email' => 'test@test.test',
             'password' => bcrypt('testpassword'),
             'birthday' => new DateTime(),
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
          ]);
          DB::table('users')->insert([
             'name' => 'テスト太郎',
+            'userid' => 'testuser2',
             'email' => 'test2@test.test',
             'password' => bcrypt('testpassword'),
             'birthday' => new DateTime(),

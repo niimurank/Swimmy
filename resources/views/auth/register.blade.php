@@ -9,6 +9,16 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+        <!-- User ID -->
+        <div class="mt-4">
+            <x-input-label for="userid" :value="__('UserId')" />
+            <div class="flex">
+                <p class="my-auto">@</p>
+                <x-text-input id="userid" class="block mt-1 ml-2 w-full" type="text" name="userid" :value="old('userid')" required autocomplete="userid" />
+            </div>
+            <x-input-error :messages="$errors->get('userid')" class="mt-2" />
+        </div>
+        
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
